@@ -1,0 +1,442 @@
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>School Portal</title>
+    </head>
+    <body>
+        <h2>School Portal</h2>
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/student">Student</a>
+        <hr>
+        <h3 th:text="${title}"></h3>
+        <p th:text="${message}"></p>
+        <p th:text="${name}"></p>
+        <p th:text="${course}"></p>
+        <p th:text="${semester}"></p>
+        <p th:text="${college}"></p>
+    </body>
+</html>
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>School Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #f9f9f9;
+        }
+        /* Title above header */
+        .site-title {
+            text-align: center;
+            background: #003366;
+            color: white;
+            padding: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        header {
+            background: #004080;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .header-left a:hover {
+            text-decoration: underline;
+        }
+        .header-right img {
+            border-radius: 12px; /* rounded corners */
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+        .layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        .left, .center, .right {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        footer {
+            background: #004080;
+            color: white;
+            padding: 15px 20px;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-left img {
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; /* circular images */
+            object-fit: cover;
+            border: 2px solid white;
+        }
+        .footer-center {
+            text-align: center;
+            flex: 1;
+        }
+        .footer-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="site-title">School Portal</div>
+
+    <header>
+        <div class="header-left">
+            <a href="/home">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/student">Student</a>
+        </div>
+
+        <div class="header-right">
+            <img src="images/car_vert.jpg" alt="Header Image">
+        </div>
+    </header>
+
+    <div class="layout">
+        <div class="left">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Dummy Link 1</a></li>
+                <li><a href="#">Dummy Link 2</a></li>
+                <li><a href="#">Dummy Link 3</a></li>
+            </ul>
+        </div>
+
+        <div class="center">
+            <h3 th:text="${title}"></h3>
+            <p th:text="${message}"></p>
+            <p th:text="${name}"></p>
+            <p th:text="${course}"></p>
+            <p th:text="${semester}"></p>
+            <p th:text="${college}"></p>
+        </div>
+
+        <div class="right">
+            <img src="images/skyline.jpg" alt="Side Image" style="width:100%; border-radius:12px; border:2px solid #ccc;">
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="images/facebook.png" alt="Logo1">
+                <img src="images/instagram.jpg" alt="Logo2">
+                <img src="images/gmail.png" alt="Logo3">
+            </div>
+
+            <div class="footer-center">
+                <p>&copy; 2026 School Portal. All rights reserved.</p>
+            </div>
+
+            <div class="footer-right">
+                <p>123 School Street,<br> Jalandhar, Punjab, India</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>School Portal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+        }
+
+        /* Title */
+        .site-title {
+            text-align: center;
+            background: linear-gradient(90deg, #003366, #00509e);
+            color: white;
+            padding: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #004080, #0066cc);
+            color: white;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .header-left a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .header-left a:hover {
+            color: #ffcc00;
+            transform: scale(1.05);
+        }
+
+        .header-right {
+            flex: 0;
+        }
+
+        .header-right img {
+            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border: 2px solid white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Layout */
+        .layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 25px;
+            padding: 25px;
+        }
+
+        .left,
+        .center,
+        .right {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Quick Links */
+        .left h4 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+
+        .left ul li a {
+            display: inline-block;
+            background: #004080;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            margin: 5px 0;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .left ul li a:hover {
+            background: #0066cc;
+            transform: translateX(5px);
+        }
+
+        /* Center Content */
+        .center h3 {
+            color: #004080;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .center p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Right Image */
+        .right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 3px solid #004080;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #004080, #002244);
+            color: white;
+            padding: 20px 25px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left img {
+            margin-right: 12px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-left img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-center {
+            text-align: center;
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .footer-right {
+            text-align: right;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="site-title">School Portal</div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <!-- These routes hit controllers -->
+            <a href="/home">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/student">Student</a>
+        </div>
+        <div class="header-right">
+            <img src="images/car_vert.jpg" alt="Header Image">
+        </div>
+    </header>
+
+    <!-- Three-column layout -->
+    <div class="layout">
+        <!-- Left segment: Quick Links -->
+        <div class="left">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#" onclick="loadContent('Library')">Library</a></li>
+                <li><a href="#" onclick="loadContent('Sports')">Sports</a></li>
+                <li><a href="#" onclick="loadContent('Events')">Events</a></li>
+            </ul>
+        </div>
+
+        <!-- Center segment -->
+        <div class="center" id="center-content">
+            <!-- Thymeleaf placeholders (only filled if controller sets them) -->
+            <h3 th:text="${title}"></h3>
+            <p th:text="${message}"></p>
+            <p th:text="${name}"></p>
+            <p th:text="${course}"></p>
+            <p th:text="${semester}"></p>
+            <p th:text="${college}"></p>
+        </div>
+
+        <!-- Right segment -->
+        <div class="right">
+            <img src="images/skyline.jpg" alt="Side Image">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="images/facebook.png" alt="Logo1">
+                <img src="images/instagram.jpg" alt="Logo2">
+                <img src="images/gmail.png" alt="Logo3">
+            </div>
+            <div class="footer-center">
+                <p>&copy; 2026 School Portal. All rights reserved.</p>
+            </div>
+            <div class="footer-right">
+                <p>123 School Street,<br> Jalandhar, Punjab, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS for Quick Links -->
+    <script>
+        function loadContent(section) {
+            const center = document.getElementById("center-content");
+            let html = "";
+            switch (section) {
+                case "Library":
+                    html = "<h3>Library</h3><p>Welcome to the school library. Explore books, journals, and digital resources.</p>";
+                    break;
+                case "Sports":
+                    html = "<h3>Sports</h3><p>Stay updated with sports activities, schedules, and achievements.</p>";
+                    break;
+                case "Events":
+                    html = "<h3>Events</h3><p>Check out upcoming events, workshops, and cultural programs.</p>";
+                    break;
+                default:
+                    html = "<h3>Welcome</h3><p>Select a quick link to view content here.</p>";
+            }
+            center.innerHTML = html;
+        }
+
+        // Show Library content by default if no controller data is present
+        window.onload = function () {
+            const title = document.querySelector(".center h3").innerText;
+            if (!title || title.trim() === "") {
+                loadContent("Library");
+            }
+        };
+    </script>
+</body>
+
+</html>
