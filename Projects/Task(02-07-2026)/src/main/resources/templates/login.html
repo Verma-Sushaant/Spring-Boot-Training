@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            width: 360px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #444;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #ff758c;
+            box-shadow: 0 0 6px rgba(255, 117, 140, 0.4);
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 117, 140, 0.4);
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link {
+            display: inline-block;
+            margin: 0 10px;
+            color: #ff758c;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link:hover {
+            color: #d9534f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Login</h2>
+        <!-- Success message banner -->
+        <div th:if="${successMessage}" class="success-banner"
+            style="background-color:#d4edda; color:#155724; padding:10px; border-radius:6px; margin-bottom:15px; text-align:center;">
+            <span th:text="${successMessage}"></span><br />
+            <span th:text="${successRedirect}"></span>
+        </div>
+        <form th:action="@{/login}" th:object="${userLog}" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input th:field="*{username}" id="username" type="text" placeholder="Enter your username" />
+                <div class="error-message" th:errors="*{username}"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input th:field="*{password}" id="password" type="password" placeholder="Enter your password" />
+                <div class="error-message" th:errors="*{password}"></div>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="links">
+            <a th:href="@{/register}" class="link">Register</a>
+            <a th:href="@{/forgot-password}" class="link">Forgot Password?</a>
+        </div>
+    </div>
+</body>
+
+</html>

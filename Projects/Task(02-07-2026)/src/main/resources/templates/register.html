@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: #fff;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            width: 380px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
+        h2 { text-align:center; margin-bottom:25px; color:#444; font-size:24px; }
+        .form-group { margin-bottom:18px; }
+        label { display:block; font-weight:600; margin-bottom:6px; color:#555; }
+        input { width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:15px; }
+        input:focus { border-color:#4facfe; box-shadow:0 0 6px rgba(79,172,254,0.4); outline:none; }
+        .btn { width:100%; padding:12px; background:linear-gradient(to right,#4facfe,#00f2fe); border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; color:#fff; }
+        .btn:hover { transform:translateY(-2px); box-shadow:0 6px 12px rgba(79,172,254,0.4); }
+        .error-message { color:#d9534f; font-size:13px; margin-top:5px; }
+        .success-banner {
+            background-color:#d4edda;
+            color:#155724;
+            padding:10px;
+            border-radius:6px;
+            margin-bottom:15px;
+            text-align:center;
+            font-size:14px;
+            font-weight:600;
+        }
+        .link { display:block; text-align:center; margin-top:18px; color:#4facfe; font-weight:600; text-decoration:none; }
+        .link:hover { color:#007bff; }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Register</h2>
+
+        <form th:action="@{/register}" th:object="${userReg}" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input th:field="*{name}" id="name" type="text" placeholder="Enter your full name" />
+                <div class="error-message" th:errors="*{name}"></div>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input th:field="*{username}" id="username" type="text" placeholder="Choose a username" />
+                <div class="error-message" th:errors="*{username}"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input th:field="*{password}" id="password" type="password" placeholder="Enter password" />
+                <div class="error-message" th:errors="*{password}"></div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input th:field="*{confirmPassword}" id="confirmPassword" type="password" placeholder="Re-enter password" />
+                <div class="error-message" th:errors="*{confirmPassword}"></div>
+            </div>
+            <div class="form-group">
+                <label for="secretKey">Secret Key:</label>
+                <input th:field="*{secretKey}" id="secretKey" type="password" placeholder="Enter system secret key" />
+                <div class="error-message" th:errors="*{secretKey}"></div>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <a th:href="@{/login}" class="link">Back to Login</a>
+    </div>
+</body>
+</html>

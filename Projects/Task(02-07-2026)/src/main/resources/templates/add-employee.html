@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #74ebd5;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #74ebd5;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #4bb3a7;
+            color: #fff;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #4bb3a7;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Add Employee</h2>
+        <!-- Success banner -->
+        <div th:if="${successMessage}"
+            style="background-color:#d4edda; color:#155724; padding:10px; border-radius:6px; margin-bottom:15px; text-align:center;">
+            <span th:text="${successMessage}"></span>
+        </div>
+
+        <!-- Bind the form to the Employee object -->
+        <form th:action="@{/employee-form}" th:object="${employee}" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input th:field="*{name}" id="name" type="text" />
+                <div class="error-message" th:errors="*{name}"></div>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input th:field="*{age}" id="age" type="number" />
+                <div class="error-message" th:errors="*{age}"></div>
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation:</label>
+                <select th:field="*{designation}" id="designation">
+                    <option value="">--Select--</option>
+                    <option value="programmer">Programmer</option>
+                    <option value="manager">Manager</option>
+                    <option value="tester">Tester</option>
+                </select>
+                <div class="error-message" th:if="${errorMessage}" style="color:red">
+                    <span th:text="${errorMessage}"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+
+
+        <!-- Link to view employees -->
+        <a th:href="@{/employees}" class="link">View Employees</a>
+    </div>
+</body>
+
+</html>
