@@ -19,17 +19,17 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/employees")
+    @GetMapping("/api/employees")
     public List<Employee> getEmployees() {
         return employeeService.getEmployees();
     }
 
-    @PostMapping("/add-employee")
+    @PostMapping("/api/add-employee")
     public String addEmployee(@RequestBody @Valid Employee employee) {
         return employeeService.addEmployee(employee);
     }
 
-    @PostMapping("/raise-salary")
+    @PostMapping("/api/raise-salary")
     public Employee raiseSalary(
         @RequestParam String name,
         @RequestParam double percent

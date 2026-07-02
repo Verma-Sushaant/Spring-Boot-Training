@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(AgeOutOfRangeException.class)
-    public String handleAgeException(AgeOutOfRangeException ex) {
-        return ex.getMessage();
-    }
     @ExceptionHandler(EmployeeNotFoundException.class)
     public String handleEmployeeNotFound(EmployeeNotFoundException ex) {
         return ex.getMessage();
@@ -26,5 +22,13 @@ public class GlobalExceptionHandler {
             errors.put(error.getField(), error.getDefaultMessage())
         );
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(InvalidSalaryRaiseException.class)
+    public String handleSalaryRaiseException(InvalidSalaryRaiseException ex) {
+        return ex.getMessage();
+    }
+    @ExceptionHandler(WrongDesignationInputException.class)
+    public String handleDesignationException(WrongDesignationInputException ex) {
+        return ex.getMessage();
     }
 }
