@@ -8,12 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.Aspectdemo.service.MyService;
 
 @SpringBootApplication
-public class AspectDemoApplication implements CommandLineRunner {
+public class AspectTaskApplication implements CommandLineRunner {
 	@Autowired
 	private MyService myService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(AspectDemoApplication.class, args);
+		SpringApplication.run(AspectTaskApplication.class, args);
 	}
 
 	@Override
