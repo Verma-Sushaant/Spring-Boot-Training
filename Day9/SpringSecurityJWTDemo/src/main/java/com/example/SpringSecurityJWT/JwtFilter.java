@@ -16,28 +16,30 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
+
     @Autowired
     private JWTUtil jwtUtil;
-    
+
     @Override
-    protected void doFilterInternal(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        FilterChain chain
-    ) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     FilterChain chain) throws ServletException, IOException {
 
         String authHeader = request.getHeader("Authorization");
-        if(authHeader == null || authHeader.startsWith("Bearer ")) {
+
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             chain.doFilter(request, response);
             return;
         }
-
         String token = authHeader.substring(7);
-        if(jwtUtil.isTokenValid(token)) {
+        if (jwtUtil.isTokenValid(token)) {
             String username = jwtUtil.extractUsername(token);
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, null, Collections.emptyList());
+            UsernamePasswordAuthenticationToken authToken =
+                    new UsernamePasswordAuthenticationToken(username, null, Collections.emptyList());
             SecurityContextHolder.getContext().setAuthentication(authToken);
         }
+
         chain.doFilter(request, response);
     }
 }
+

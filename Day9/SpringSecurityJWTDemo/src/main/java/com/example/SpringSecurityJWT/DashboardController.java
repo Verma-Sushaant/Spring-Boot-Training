@@ -16,3 +16,4 @@ public class DashboardController {
         return ResponseEntity.ok("Welcome, " + username + "! This is protected data.");
     }
 }
+
